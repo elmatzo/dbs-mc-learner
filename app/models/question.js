@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import FixtureData from 'dbs-mc-learner/fixtures/question-data';
 
 var Question = DS.Model.extend({
 	text: DS.attr('string'),
@@ -6,18 +7,7 @@ var Question = DS.Model.extend({
 });
 
 Question.reopenClass({
-  FIXTURES: [
-    {
-      "id": 1,
-      "text": "Bei der Bearbeitung der Anfrage σA>aR fuhrt ein Hash Index fuer das Attribut A manchmal zu einer effizienteren Auswertung aber niemals zu einer weniger effizienten Auswertung als ein B+ Baum Index fuer dieses Attribut.",
-      "answer": true
-    },
-    {
-      "id": 2,
-      "text": "bla",
-      "answer": false
-    }
-  ]
+  FIXTURES: FixtureData
 });
 
 export default Question;
