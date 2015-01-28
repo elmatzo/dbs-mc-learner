@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import QuestionData from 'dbs-mc-learner/json/questions-data';
 
-export default Ember.Controller.extend({
-	questions: QuestionData
+export default Ember.ArrayController.extend({
+  secondQuestion: function() {
+    return this.get('content').objectAt(1);
+  }.property('content')
 });

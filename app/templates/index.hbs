@@ -5,10 +5,11 @@
 		</div>
 		<div class="col-xs-12" >
 			<div class="text-center question">
-				{{#each question in questions}}
+				{{#each question in content}}
 			  		<p>{{ question.id }}</p>
+                    <p>{{ question.text }}</p>
 				{{/each}}
-				<p>{{ questions.get(2).id }}</p>
+				<p>{{ secondQuestion.id }}</p>
 			</div>
 		</div>
 		<div class="col-xs-6" >

@@ -19,3 +19,5 @@ testem.log
 #sublime
 *.sublime-project
 *.sublime-workspace
+
+.idea/*
