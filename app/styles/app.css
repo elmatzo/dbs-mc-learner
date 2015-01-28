@@ -1,3 +1,6 @@
-html, body {
-  margin: 20px;
+body {
+  padding-top: 1.25em;
+}
+.navbar {
+  margin-bottom: 1.25em;
 }
