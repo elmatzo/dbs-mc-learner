@@ -1,15 +1,11 @@
 <div class="text-center">
 	<div class="row">
 		{{ render "partials/question" nextQuestion }}
-		<div class="col-xs-6" >
-			<div class="text-center answer answer-true">
-			  <p>Wahr</p>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="text-center answer answer-false">
-			  <p>Falsch</p>
-			</div>
-		</div>
+		<div class="col-xs-12" >
+			<div class="btn-group btn-group-justified" role="group">
+				<a href="#" class="btn btn-default" role="button">Falsch</a>
+	  			<a href="#" class="btn btn-default" role="button">Wahr</a>
+	    	</div>
+    	</div>
 	</div><!-- /.row -->
 </div>
