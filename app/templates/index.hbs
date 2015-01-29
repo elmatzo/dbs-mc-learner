@@ -1,19 +1,6 @@
 <div class="text-center">
 	<div class="row">
-		<div class="col-xs-12">
-			<p class="text-center question-header">Frage 1/30</p>
-		</div>
-		<div class="col-xs-12" >
-			<div class="text-center questions">
-                {{#each question in model}}
-                    <div class="question">
-                        <p>{{ question.id }}</p>
-                        <p>{{ question.text }}</p>
-                    </div>
-				{{/each}}
-				<p>{{ secondQuestion.id }}</p>
-			</div>
-		</div>
+		{{ render "partials/question" nextQuestion }}
 		<div class="col-xs-6" >
 			<div class="text-center answer answer-true">
 			  <p>Wahr</p>
