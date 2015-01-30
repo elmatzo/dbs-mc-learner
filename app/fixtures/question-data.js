@@ -8,5 +8,10 @@ export default [
       id: 2,
       text: 'bla',
       answer: false
+    },
+    {
+      id: 3,
+      text: 'Blub',
+      answer: false
     }
 ];
