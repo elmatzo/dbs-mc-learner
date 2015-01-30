@@ -1,4 +1,5 @@
 import Ember from 'ember';
+/* global sweetAlert */
 
 export default Ember.ArrayController.extend({
 
@@ -37,7 +38,7 @@ export default Ember.ArrayController.extend({
 								all / wrong
 					*/
 				}
-			}
+			};
 
 			//Handle User Answer - shows success/error alert
 			if(this.get('question').get('answer') === answer){
