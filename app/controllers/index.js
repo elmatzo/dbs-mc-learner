@@ -3,9 +3,11 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
+  //TODO: Init Function
+  //TODO: callback function dry / self - this rework
+
   needs: 'results',
-	//TODO: Init Function
-	//TODO: callback function dry / self - this rework
+
   question: function() {
     return this.get('model').objectAt(0);
   }.property('model'),
