@@ -3,62 +3,87 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
+  needs: 'results',
 	//TODO: Init Function
 	//TODO: callback function dry / self - this rework
+  question: function() {
+    return this.get('model').objectAt(0);
+  }.property('model'),
 
-	counter: 0,
+  counter: 1,
 
-	wrongQuestions : [],
+  allMode: true,
 
-  	question: function() {
-    	return this.get('model').objectAt(this.counter);
-  	}.property('model'),
+  wrongQuestions: [],
 
-  	actions: {
+  resetCounter: function() {
+    this.counter = 1;
+  },
 
-  		//Called when user clicks true / false
-  		answerQuestion: function(answer) {
+  setAllMode: function() {
+    this.set('allMode', true);
+    this.set('wrongQuestions', []);
+    this.setQuestion();
+  },
 
-  			//Callback for Alert - shows next Question after alert's closed
-  			var controller = this;
-  			var nextQuestion = function(){
-  				if(controller.counter < controller.get('model').get('length')-1){
-					controller.counter++;
-					controller.set(
-						'question', 
-						controller.get('model').objectAt(controller.counter)
-					);
-				}
-				else{
-					//TODO:
-					/*
-						Show End Screen:
-							Score
-							Again?
-								all / wrong
-					*/
-				}
-			};
+  setFalseMode: function() {
+    this.set('allMode', false);
+    this.setQuestion();
+  },
 
-			//Handle User Answer - shows success/error alert
-			if(this.get('question').get('answer') === answer){
-				sweetAlert({
-					title: 'Korrekt...',
-					type: 'success',    
-					confirmButtonText: 'Nächste Frage',
-				}, nextQuestion);
-			}
-			else{
-				this.wrongQuestions.pushObject(this.get('question'));
-				sweetAlert({
-					title: 'Inkorrekt...',
-					type: 'error',    
-					confirmButtonText: 'Nächste Frage',
-				}, nextQuestion);
-			}
+  setQuestion: function() {
+    if(this.allMode)
+      this.set('question',this.get('model').objectAt(this.counter-1));
+    else
+      this.set('question',this.wrongQuestions.objectAt(this.counter-1));
+  },
 
+	actions: {
+
+    //Called when user clicks true / false
+		answerQuestion: function(answer) {
+
+			//Callback for Alert - shows next Question after alert's closed
+			var controller = this;
+      var questionsLength = this.get('model').get('length');
+			var nextQuestion = function(){
+				if(controller.counter < questionsLength){
+  				controller.incrementProperty('counter');
+  				controller.setQuestion();
+			  }
+			  else{
+          controller.get('controllers.results').set(
+            'correctAnswers',
+            questionsLength-controller.get('wrongQuestions').get('length')
+          );
+          controller.get('controllers.results').set(
+            'wrongAnswers',
+            controller.get('wrongQuestions').get('length')
+          );
+          controller.transitionToRoute('results');
+			  }
+		  };
+
+  		//Handle User Answer - shows success/error alert
+      var buttonText = 'Naechste Frage';
+      if(this.get('model').get('length') === this.get('question').get('id'))
+        buttonText = 'Ergebnisse';
+
+  		if(this.get('question').get('answer') === answer){
+  			sweetAlert({
+  				title: 'Korrekt...',
+  				type: 'success',
+  				confirmButtonText: buttonText,
+  			}, nextQuestion);
   		}
-  	},
-
-
+  		else{
+  			this.wrongQuestions.pushObject(this.get('question'));
+  			sweetAlert({
+  				title: 'Inkorrekt...',
+  				type: 'error',
+  				confirmButtonText: buttonText,
+  			}, nextQuestion);
+  		}
+		}
+	}
 });
