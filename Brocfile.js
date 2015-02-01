@@ -24,4 +24,13 @@ app.import('bower_components/sweetalert/lib/sweet-alert.js');
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = app.toTree();
+// Put the bootstrap fonts in the place that the bootstrap css expects to find them.
+var pickFiles = require('broccoli-static-compiler');
+var bootstrapFonts = pickFiles('bower_components/bootstrap/dist/fonts/', {
+    srcDir: '/',
+    files: ['**/*'],
+    destDir: '/fonts'
+});
+// Merge the bootstrapFonts with the ember app tree
+var mergeTrees = require('broccoli-merge-trees');
+module.exports = mergeTrees([app.toTree(),bootstrapFonts]);
