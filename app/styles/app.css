@@ -1,6 +1,34 @@
+/*General*/
 body {
   padding-top: 1.25em;
 }
-.navbar {
+/*Header/Nav*/
+.header {
   margin-bottom: 1.25em;
+  height: 5em;
+  line-height: 5em;
+  border: 1px solid black;
+}
+/*Index*/
+.question-header{
+  font-size: 1.35em;
+  height: 3em;
+  line-height: 3em;
+  border: 1px solid black;
+}
+.question-text{
+  font-size: 1.1em;
+  border: 1px solid black;
+  padding: 1em;
+}
+.answers{
+  margin-top: 1em;
+}
+.answers a{
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 0;
+}
+.answers a:focus{
+  outline: none;
 }
