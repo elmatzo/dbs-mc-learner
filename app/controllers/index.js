@@ -8,15 +8,23 @@ export default Ember.ArrayController.extend({
 
   needs: 'results',
 
-  question: function() {
-    return this.get('model').objectAt(0);
-  }.property('model'),
-
   counter: 1,
 
   allMode: true,
 
   wrongQuestions: [],
+
+  maxQuestions: function() {
+    return this.get('allQuestions').get('length');
+  }.property(),
+
+  allQuestions: function() {
+    return this.get('model');
+  }.property('model'),
+
+  question: function() {
+    return this.get('allQuestions').objectAt(this.get('counter')-1);
+  }.property('model'),
 
   resetCounter: function() {
     this.counter = 1;
@@ -25,19 +33,41 @@ export default Ember.ArrayController.extend({
   setAllMode: function() {
     this.set('allMode', true);
     this.set('wrongQuestions', []);
+    this.set('allQuestions', this.get('model'));
+    this.setMaxQuestions();
     this.setQuestion();
   },
 
   setFalseMode: function() {
     this.set('allMode', false);
+    this.set('allQuestions', this.get('wrongQuestions'));
+    this.set('wrongQuestions', []);
+    this.setMaxQuestions();
     this.setQuestion();
   },
 
+  setMaxQuestions: function() {
+    this.set('maxQuestions', this.get('allQuestions').get('length'));
+  },
+
   setQuestion: function() {
-    if(this.allMode)
-      this.set('question',this.get('model').objectAt(this.counter-1));
+      this.set('question',this.get('allQuestions').objectAt(this.counter-1));
+  },
+
+  setRightWrongQuestions: function(questionsLength) {
+    var wrongQuestionsLength = this.get('wrongQuestions').get('length');
+    this.get('controllers.results').set(
+      'correctAnswers',
+      questionsLength-wrongQuestionsLength
+    );
+    this.get('controllers.results').set(
+      'wrongAnswers',
+      this.get('wrongQuestions').get('length')
+    );
+    if(wrongQuestionsLength > 0)
+      this.get('controllers.results').set('retakeWrongIsPossible', true);
     else
-      this.set('question',this.wrongQuestions.objectAt(this.counter-1));
+      this.get('controllers.results').set('retakeWrongIsPossible', false);
   },
 
 	actions: {
@@ -47,28 +77,21 @@ export default Ember.ArrayController.extend({
 
 			//Callback for Alert - shows next Question after alert's closed
 			var controller = this;
-      var questionsLength = this.get('model').get('length');
+      var questionsLength = this.get('allQuestions').get('length');
 			var nextQuestion = function(){
 				if(controller.counter < questionsLength){
   				controller.incrementProperty('counter');
-  				controller.setQuestion();
+          controller.setQuestion();
 			  }
 			  else{
-          controller.get('controllers.results').set(
-            'correctAnswers',
-            questionsLength-controller.get('wrongQuestions').get('length')
-          );
-          controller.get('controllers.results').set(
-            'wrongAnswers',
-            controller.get('wrongQuestions').get('length')
-          );
+          controller.setRightWrongQuestions(questionsLength);
           controller.transitionToRoute('results');
 			  }
 		  };
 
   		//Handle User Answer - shows success/error alert
       var buttonText = 'Naechste Frage';
-      if(this.get('model').get('length') === this.get('question').get('id'))
+      if(this.get('allQuestions').get('length') === this.get('question').get('id'))
         buttonText = 'Ergebnisse';
 
   		if(this.get('question').get('answer') === answer){

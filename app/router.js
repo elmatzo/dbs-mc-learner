@@ -6,8 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('results'),
-  this.route('questions'),
+  this.route('results');
+  this.route('questions');
   this.route('about');
 });
 

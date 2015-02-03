@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
 
   wrongAnswers: 0,
 
+  retakeWrongIsPossible: true,
+
   actions: {
     retakeAll: function(all){
       this.get('controllers.index').resetCounter();
@@ -14,7 +16,7 @@ export default Ember.Controller.extend({
       if(all)
         this.get('controllers.index').setAllMode();
       else{
-
+        this.get('controllers.index').setFalseMode();
       }
 
       this.transitionToRoute('index');
