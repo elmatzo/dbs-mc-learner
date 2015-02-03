@@ -33,9 +33,10 @@ header h3{
   font-size: 1.1em;
   border: 1px solid black;
   padding: 1em;
+  margin-bottom: 0.75em;
 }
-.answers{
-  margin-top: 0.75em;
+.question-text p{
+  margin: 0;
 }
 .answers a{
   text-decoration: none;
@@ -46,8 +47,26 @@ header h3{
   outline: none;
 }
 .answers-true:hover {
-  background-color: #145931;
+  background-color: #56B35D;
 }
 .answers-false:hover {
   background-color: #F23E2E;
+}
+/*Questions*/
+.pagination {
+  border: 1px solid black;
+  padding: 1em;
+  margin-top: 0;
+  border-radius: 0;
+  margin-bottom: 0.75em;
+}
+.pagination p {
+  font-size: 1.25em;
+  display: inline;
+}
+.pagination-info{
+  display: inline;
+}
+.pagination-nav-elemnt{
+  cursor: pointer;
 }
