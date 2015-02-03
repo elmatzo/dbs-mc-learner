@@ -3,17 +3,30 @@ body {
   padding-top: 1.25em;
 }
 /*Header/Nav*/
-.header {
-  margin-bottom: 1.25em;
-  height: 5em;
-  line-height: 5em;
+header {
+  margin-bottom: 0.75em;
   border: 1px solid black;
+}
+header h3{
+  margin-bottom: 0;
+}
+.breadcrumb {
+  background: white;
+  margin-bottom: 0.5em;
+  margin-top: 0em;
+}
+.breadcrumb a{
+  text-decoration: none;
+}
+.breadcrumb a:visited, .breadcrumb a:link{
+  text-decoration: none;
+  color:inherit;
 }
 /*Index*/
 .question-header{
-  font-size: 1.35em;
-  height: 3em;
-  line-height: 3em;
+  font-size: 1.25em;
+  height: 2.75em;
+  line-height: 2.75em;
   border: 1px solid black;
 }
 .question-text{
@@ -22,7 +35,7 @@ body {
   padding: 1em;
 }
 .answers{
-  margin-top: 1em;
+  margin-top: 0.75em;
 }
 .answers a{
   text-decoration: none;
@@ -31,4 +44,10 @@ body {
 }
 .answers a:focus{
   outline: none;
+}
+.answers-true:hover {
+  background-color: #145931;
+}
+.answers-false:hover {
+  background-color: #F23E2E;
 }
