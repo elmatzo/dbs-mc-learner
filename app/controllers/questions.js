@@ -12,6 +12,7 @@ export default Ember.ArrayController.extend({
     return Math.ceil(this.get('model').get('length')/3);
   }.property(),
 
+  //TODO: Computed property?
   nextIsPossible: true,
 
   prevIsPossible: false,
