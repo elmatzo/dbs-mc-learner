@@ -23,7 +23,6 @@ export default Ember.ArrayController.extend({
   }.property('model'),
 
   question: function() {
-    console.log("initquestion!!!");
     this.setQuestion();
   }.property('model'),
 
@@ -32,11 +31,9 @@ export default Ember.ArrayController.extend({
   },
 
   setAllMode: function() {
-    console.log("######## setting all mode");
     this.set('allMode', true);
     this.set('wrongQuestions', []);
     this.set('allQuestions', Ember.copy(this.get('model').toArray()));
-    console.log("Questions Length: " + this.get('allQuestions').get('length'));
     this.setMaxQuestions();
     this.setQuestion();
   },
@@ -56,8 +53,6 @@ export default Ember.ArrayController.extend({
   setQuestion: function() {
     var randomQuestionIndex = Math.floor(Math.random() * this.get('allQuestions').get('length'));
     var randomQuestion = this.get('allQuestions').objectAt(randomQuestionIndex);
-    console.log("Questions Length: " + this.get('allQuestions').get('length'));
-    console.log("Remove at: " + randomQuestionIndex);
     this.get('allQuestions').removeAt(randomQuestionIndex);
     this.set('question',randomQuestion);
   },
