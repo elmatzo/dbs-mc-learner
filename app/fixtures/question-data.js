@@ -139,7 +139,7 @@ export default [
     },
     {
       id: 29,
-      text: 'Die Anzahl der Zyklen im Wartegraphen entspricht immer der Anzahl der Transaktionen, die zuruckgesetzt werden müssen, um einen Deadlock aufzulösen.'
+      text: 'Die Anzahl der Zyklen im Wartegraphen entspricht immer der Anzahl der Transaktionen, die zuruckgesetzt werden müssen, um einen Deadlock aufzulösen.',
       answer: false
     },
     {
