@@ -1,28 +1,30 @@
+<div class="col-xs-12 results-header">
+  <p>Ergebnis</p>
+</div>
+<div class="col-xs-12 results">
+  <div class="col-xs-6">
+    <p>Richtig</p>
+  </div>
+  <div class="col-xs-6">
+    <p class="correct">{{ correctAnswers }}</p>
+  </div>
+  <div class="col-xs-6">
+    <p>Falsch</p>
+  </div>
+  <div class="col-xs-6">
+    <p class="wrong">{{ wrongAnswers }}</p>
+  </div>
+</div>
+<div class="col-xs-12 results-retake">
+  <p>Wiederholen</p>
+</div>
 <div class="row">
-  <div class="col-xs-12">
-    <p>Lern-Ergebnisse:</p>
-  </div>
-  <div class="col-xs-6">
-    <p>Richtig:</p>
-  </div>
-  <div class="col-xs-6">
-    <p>{{ correctAnswers }}</p>
-  </div>
-  <div class="col-xs-6">
-    <p>Falsch:</p>
-  </div>
-  <div class="col-xs-6">
-    <p>{{ wrongAnswers }}</p>
-  </div>
-  <div class="col-xs-12">
-    <p>Nochmal?</p>
-  </div>
   <div class="col-xs-12" >
-    <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group btn-group-justified results-footer" role="group">
       <a href="#" class="btn btn-default" role="button" {{ action 'retakeAll' true }}>Alle Fragen</a>
       {{#if retakeWrongIsPossible}}
       <a href="#" class="btn btn-default" role="button" {{ action 'retakeAll' flase }}>Nur Falsche</a>
       {{/if}}
     </div>
   </div>
-</div><!-- /.row -->
+</div>
