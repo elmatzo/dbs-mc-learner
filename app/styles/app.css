@@ -22,6 +22,10 @@ header h3{
   text-decoration: none;
   color:inherit;
 }
+.breadcrumb a.active{
+  text-decoration: underline;
+}
+
 /*Index*/
 .question-header{
   font-size: 1.25em;
