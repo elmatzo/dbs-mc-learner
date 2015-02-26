@@ -18,7 +18,7 @@ export default [
       id: 4,
       text: 'Ein geballter Index eignet sich vor allem bei Bereichsabfragen.',
       answer: true
-    }/*,
+    },
     {
       id: 5,
       text: 'Betrachten Sie zwei Relationen <em>R(ABC)</em> und <em>S(ABD)</em>. Dann gelten auf jeden Fall folgende Gleichheiten: <em>( R ⋉ S ) = ( R ⋈ π<sub>A</sub> ( S ) ) = ( R ⋈ π<sub>AB</sub> ( S ) )</em>',
@@ -139,7 +139,7 @@ export default [
     },
     {
       id: 29,
-      text: 'Die Anzahl der Zyklen im Wartegraphen entspricht immer der Anzahl der Transaktionen, die zuruckgesetzt werden müssen, um einen Deadlock aufzulösen.'
+      text: 'Die Anzahl der Zyklen im Wartegraphen entspricht immer der Anzahl der Transaktionen, die zuruckgesetzt werden müssen, um einen Deadlock aufzulösen.',
       answer: false
     },
     {
@@ -187,5 +187,4 @@ export default [
       text: 'Bei der Historie <em>r<sub>1</sub>(A), r<sub>2</sub>(A), w<sub>2</sub>(B), r<sub>1</sub>(B), a<sub>1</sub></em> fuhrt der Abbruch der Transaktion <em>T<sub>1</sub></em> zu einem kaskadierenden Rucksetzen von <em>T<sub>2</sub></em>.',
       answer: false
     }
-    */
 ];
