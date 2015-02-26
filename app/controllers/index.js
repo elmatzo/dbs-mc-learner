@@ -19,11 +19,11 @@ export default Ember.ArrayController.extend({
   }.property(),
 
   allQuestions: function() {
-    return this.get('model');
+    return Ember.copy(this.get('model').toArray());
   }.property('model'),
 
   question: function() {
-    return this.get('allQuestions').objectAt(this.get('counter')-1);
+    this.setQuestion();
   }.property('model'),
 
   resetCounter: function() {
@@ -33,7 +33,7 @@ export default Ember.ArrayController.extend({
   setAllMode: function() {
     this.set('allMode', true);
     this.set('wrongQuestions', []);
-    this.set('allQuestions', this.get('model'));
+    this.set('allQuestions', Ember.copy(this.get('model').toArray()));
     this.setMaxQuestions();
     this.setQuestion();
   },
@@ -51,7 +51,10 @@ export default Ember.ArrayController.extend({
   },
 
   setQuestion: function() {
-      this.set('question',this.get('allQuestions').objectAt(this.counter-1));
+    var randomQuestionIndex = Math.floor(Math.random() * this.get('allQuestions').get('length'));
+    var randomQuestion = this.get('allQuestions').objectAt(randomQuestionIndex);
+    this.get('allQuestions').removeAt(randomQuestionIndex);
+    this.set('question',randomQuestion);
   },
 
   setRightWrongQuestions: function(questionsLength) {
@@ -77,7 +80,7 @@ export default Ember.ArrayController.extend({
 
 			//Callback for Alert - shows next Question after alert's closed
 			var controller = this;
-      var questionsLength = this.get('allQuestions').get('length');
+      var questionsLength = this.get('maxQuestions');
 			var nextQuestion = function(){
 				if(controller.counter < questionsLength){
   				controller.incrementProperty('counter');
@@ -91,7 +94,7 @@ export default Ember.ArrayController.extend({
 
   		//Handle User Answer - shows success/error alert
       var buttonText = 'Naechste Frage';
-      if(this.get('allQuestions').get('length') === this.get('question').get('id'))
+      if(questionsLength === controller.counter)
         buttonText = 'Ergebnisse';
 
   		if(this.get('question').get('answer') === answer){
