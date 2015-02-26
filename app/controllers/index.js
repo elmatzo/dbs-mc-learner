@@ -3,9 +3,6 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  //TODO: Init Function
-  //TODO: callback function dry / self - this rework
-
   needs: 'results',
 
   counter: 1,
@@ -16,7 +13,7 @@ export default Ember.ArrayController.extend({
 
   maxQuestions: function() {
     return this.get('allQuestions').get('length');
-  }.property(),
+  }.property('length'),
 
   allQuestions: function() {
     return Ember.copy(this.get('model').toArray());
