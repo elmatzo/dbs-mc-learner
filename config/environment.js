@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'dbs-mc-learner',
     environment: environment,
-    baseURL: '/dbs-mc-learner',
+    baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+   ENV.baseURL = '/dbs-mc-learner'
   }
 
   return ENV;
