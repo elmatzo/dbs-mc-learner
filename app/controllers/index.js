@@ -75,6 +75,9 @@ export default Ember.ArrayController.extend({
     //Called when user clicks true / false
 		answerQuestion: function(answer) {
 
+      //remove focus
+      $('.answers a').blur();
+
 			//Callback for Alert - shows next Question after alert's closed
 			var controller = this;
       var questionsLength = this.get('maxQuestions');
