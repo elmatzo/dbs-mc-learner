@@ -31,7 +31,7 @@ export default [
     },
     {
       id: 7,
-      text: 'Es gibt Relationen <em>R(AB)</em> mit 100 Tupeln und <em>S(AC)</em> mit 100 Tupeln, für die der Ausdruck <em>R ⋈ S</em> 10000 Tupeln ergibt.',
+      text: 'Es gibt Relationen <em>R(<u>A</u>B)</em> mit 100 Tupeln und <em>S(AC)</em> mit 100 Tupeln, für die der Ausdruck <em>R ⋈ S</em> 10000 Tupeln ergibt.',
       answer: false
     },
     {
@@ -125,7 +125,8 @@ export default [
     },
     {
       id: 26,
-      text: 'Es gibt Relationen <em>R(<u>A</u>B)</em> mit 100 Tupeln und <em>S(AC)</em> mit 100 Tupeln, fur die der Ausdruck R ⋉ S 1000 Tupeln ergibt.'
+      text: 'Es gibt Relationen <em>R(<u>A</u>B)</em> mit 100 Tupeln und <em>S(AC)</em> mit 100 Tupeln, fur die der Ausdruck R ⋉ S 1000 Tupeln ergibt.',
+      answer: false
     },
     {
       id: 27,
@@ -169,7 +170,7 @@ export default [
     },
     {
       id: 35,
-      text: 'Geschachtelte Relationen in objektrelationalen Datenbanken erlauben unter Umst¨anden eine effizientere Auswertung von Anfragen bezuglich 1:n-Relationen.',
+      text: 'Geschachtelte Relationen in objektrelationalen Datenbanken erlauben unter Umständen eine effizientere Auswertung von Anfragen bezuglich 1:n-Relationen.',
       answer: true
     },
     {
